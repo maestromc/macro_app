@@ -372,21 +372,24 @@ with tab5:
     str_visual.markdown("#### 📈 S&P 500 실시간 다년도 종합 추세선 차트")
    
     tradingview_chart_code = """
- <div class="tradingview-widget-container" style="height:100%; width:100%;">
-      <div id="tradingview_expert_chart" style="height:calc(100% - 32px); width:100%"></div>
-      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-      {
+ <div class="tradingview-widget-container" style="height:450px;">
+      <div id="tradingview_expert_chart" style="height:100%;"></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+      <script type="text/javascript">
+      new TradingView.widget({
         "autosize": true,
-        "symbol": "SP:SPX",
+        "symbol": "SPX",
         "interval": "D",
         "timezone": "Etc/UTC",
         "theme": "light",
         "style": "1",
         "locale": "kr",
+        "toolbar_bg": "#f1f3f6",
         "enable_publishing": false,
+        "hide_side_toolbar": false,
         "allow_symbol_change": true,
         "container_id": "tradingview_expert_chart"
-      }
+      });
       </script>
     </div>
     """
