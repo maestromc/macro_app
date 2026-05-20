@@ -525,7 +525,7 @@ with tab10:
     with ln2:
         str_visual.markdown("### 🤖 마스터 AI 워크스페이스")
         str_visual.markdown("- [✨ 구글 제미나이 (Gemini)](https://gemini.google.com)")
-        str_visual.mrkdown("- [🧠 오픈AI 클로드 (Claude)](https://claude.ai)")
+        str_visual.markdown("- [🧠 오픈AI 클로드 (Claude)](https://claude.ai)")
         str_visual.markdown("- [🚀 엑스 그록 (Grok)](https://x.com/i/grok)")
     with ln3:
         str_visual.markdown("### 💻 개발 & 클라우드 스토리지")
