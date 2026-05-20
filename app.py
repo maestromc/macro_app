@@ -377,7 +377,7 @@ with tab5:
       <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
       <script type="text/javascript">
       new TradingView.widget({
-        "autosize": true, "symbol": "SPX", "interval": "D", "timezone": "Etc/UTC",
+        "autosize": true, "symbol": "SP:SPX", "interval": "D", "timezone": "Etc/UTC",
         "theme": "light", "style": "1", "locale": "kr", "container_id": "tradingview_expert_chart"
       });
       </script>
