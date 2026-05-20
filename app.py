@@ -101,7 +101,7 @@ US_Stocks = {
 Korea_Stocks = {
     "반도체/IT": {"삼성전자": "005930.KS", "SK하이닉스": "000660.KS", "NAVER": "035420.KS", "카카오": "035720.KS", "한미반도체": "042700.KS", "삼성전우": "005935.KS"},
     "자동차/배터리": {"현대차": "005380.KS", "기아": "000270.KS", "LG엔솔": "373220.KS", "POSCO홀딩스": "005490.KS", "삼성SDI": "006400.KS", "에코프로비엠": "247540.KQ", "에코프로": "086520.KQ", "LG화학": "051910.KS", "포스코퓨처엠": "003670.KS"},
-    "바이오/헬스": {"삼성바이오로직스": "207940.KS", "셀트리온": "068270.KS", "알테오젠": "196170.KQ", "HLB": "028300.KQ", "유한양행": "000100.KS", "SK바이오팜": "326030.KS"},
+    "바이오/헬스": {"삼성바이오로직스": "207940.KS", "셀트리온": "068270.KS", "알테오জেন": "196170.KQ", "HLB": "028300.KQ", "유한양행": "000100.KS", "SK바이오팜": "326030.KS"},
     "금융/지주사": {"KB금융": "105560.KS", "신한지주": "055550.KS", "하나금융지주": "086790.KS", "메리츠금융": "138040.KS", "삼성생명": "032830.KS", "삼성화재": "000810.KS", "한국전력": "015760.KS"},
     "중공업/방산/엔지니어링": {"한화에어로스페이스": "012450.KS", "두산에너빌리티": "034020.KS", "HD현대중공업": "329180.KS", "삼성중공업": "010140.KS", "HD현대일렉트릭": "247540.KS", "현대건설": "000720.KS"},
     "엔터/기타대장주": {"하이브": "352820.KS", "고려아연": "010130.KS", "KT&G": "033780.KS", "SK이노베이션": "096770.KS", "S-Oil": "010950.KS", "크래프톤": "259960.KS", "엔씨소프트": "036570.KS", "넷마블": "251270.KS", "LG전자": "066570.KS", "삼성SDS": "018260.KS", "대한항공": "003490.KS", "HMM": "011200.KS"}
@@ -207,16 +207,17 @@ with tab1:
         str_visual.markdown("### 🌋 변동성 / 에너지 / 귀금속")
         str_visual.metric("VIX 공포지수", f"{macro_results.get('VIX 공포지수', {}).get('현재가', 0)}", f"{macro_results.get('VIX 공포지수', {}).get('일간변동(%)', 0)}%")
         str_visual.metric("금 선물 가격 (Gold)", f"${macro_results.get('금 선물', {}).get('현재가', 0)}", f"{macro_results.get('금 선물', {}).get('일간변동(%)', 0)}%")
-        str_visual.metric("은 선물 가격 (Silver)", f"${macro_results.get('은 선물 가격', {}).get('현재가', 0)}", f"{macro_results.get('은 선물 가격', {}).get('일간변동(%)', 0)}%")
+        str_visual.metric("銀 선물 가격 (Silver)", f"${macro_results.get('은 선물 가격', {}).get('현재가', 0)}", f"{macro_results.get('은 선물 가격', {}).get('일간변동(%)', 0)}%")
         str_visual.metric("WTI 국제유가 선물", f"${macro_results.get('WTI 유가', {}).get('현재가', 0)}", f"{macro_results.get('WTI 유가', {}).get('일간변동(%)', 0)}%")
     with g4:
-        str_visual.markdown("### 🪙 디지털자산 & 농산물")
+        str_visual.markdown("### 🪙 디지털자산 & 원자재")
         str_visual.metric("비트코인 (BTC-USD)", f"${macro_results.get('비트코인 (BTC)', {}).get('현재가', 0):,}", f"{macro_results.get('비트코인 (BTC)', {}).get('일간변동(%)', 0)}%")
         str_visual.metric("이더리움 (ETH-USD)", f"${macro_results.get('이더리움 (ETH)', {}).get('현재가', 0):,}", f"{macro_results.get('이더리움 (ETH)', {}).get('일간변동(%)', 0)}%")
         str_visual.metric("구리 선물 가격", f"${macro_results.get('구리 선물 가격', {}).get('현재가', 0)}", f"{macro_results.get('구리 선물 가격', {}).get('일간변동(%)', 0)}%")
         str_visual.metric("대두(콩) 선물 가격", f"${macro_results.get('대두 선물 가격', {}).get('현재가', 0)}", f"{macro_results.get('대두 선물 가격', {}).get('일간변동(%)', 0)}%")
 
     str_visual.markdown("---")
+    str_visual.subheader("📦 거시경제 인덱스 시계열 통합 스코어 보드")
     macro_table = []
     for name, d in macro_results.items():
         if name == "장단기 금리차": continue
@@ -320,11 +321,10 @@ with tab4:
     fomc_col1.metric(label="🔒 금리 동결 (또는 인하) 확률", value="84.5%", delta="전주 대비 +2.1%")
     fomc_col2.metric(label="🚨 금리 인상 확률", value="15.5%", delta="전주 대비 -2.1%")
 
-# --- 탭 5: 올인원 마스터 뷰 (실시간 차트 시각화 및 섹터 테이블 고도화) ---
+# --- 탭 5: 올인원 마스터 뷰 ---
 with tab5:
     str_visual.subheader("📺 ALL-IN-ONE 글로벌 매크로 인텔리전스 전광판")
     
-    # 상단 정보 레이아웃 및 빅 넘버 피어그리드 스케일링
     om1, om2, om3, om4, om5, om6 = str_visual.columns(6)
     om1.metric("DXY 달러인덱스", macro_results.get("달러 인덱", {}).get("현재가", 0))
     om2.metric("美 10Y 국채금리", f"{macro_results.get('미 국채 10년물', {}).get('현재가', 0)}%")
@@ -338,7 +338,6 @@ with tab5:
     
     str_visual.markdown("---")
     
-    # 실시간 S&P 500 추세선 라인 차트 구현
     str_visual.markdown("#### 📈 S&P 500 실시간 시계열 추세 모니터링 차트")
     try:
         spy_obj = yf.Ticker("^GSPC")
@@ -350,19 +349,18 @@ with tab5:
         
     str_visual.markdown("---")
     
-    # 하방 격자 분할
     m_left, m_right = str_visual.columns([1, 1])
     
     with m_left:
         str_visual.markdown("#### 🧱 주요 섹터 흐름 및 팩터 상대강도 상세 (일간/월간/연간)")
-        # 7대 핵심 ETF 정보 연산 통합 추출
         sector_tickers = {"XLK":"XLK", "XLU":"XLU", "XLE":"XLE", "SPHB":"SPHB", "SPLV":"SPLV", "IVW":"IVW", "IVE":"IVE", "SOXX":"SOXX"}
         sec_res = get_expert_calculated_data({"섹터": sector_tickers}, selected_date)
         
         sec_rows = []
         for k, name in {"XLK":"XLK (테크)", "XLU":"XLU (유틸리티)", "XLE":"XLE (에너지)", "SPHB":"SPHB (하이베타)", "SPLV":"SPLV (로우베타)", "IVW":"IVW (성장주)", "IVE":"IVE (가치주)", "SOXX":"SOXX (반도체 선행)"}.items():
             d = sec_res.get(k, {"일간변동(%)":0, "월간변동(%)":0, "연초대비(%)":0})
-            sec_rows.append({"구분": name, "일간 변동": d["일간변동(%)"], "월간 변동": d["월간변동(%)"], "연간 변동(연초비)": d["연초대비(%)"]})
+            # 🎯 [KeyError 해결 핵심] 칼럼 이름을 아래 subset에 들어갈 명칭과 정확히 1:1 동기화시킴
+            sec_rows.append({"구분": name, "일간 변동": d["일간변동(%)"], "월간 변동": d["월간변동(%)"], "연간 변동": d["연초대비(%)"]})
         
         df_sec = pd.DataFrame(sec_rows)
         str_visual.dataframe(df_sec.style.map(color_delta_grid, subset=["일간 변동", "월간 변동", "연간 변동"]), use_container_width=True, hide_index=True)
@@ -374,7 +372,6 @@ with tab5:
         c_2y_rate = macro_results.get('미 국채 2년물', {}).get('현재가', 0)
         jpy_rate = macro_results.get('USD/JPY (캐리 신호)', {}).get('현재가', 0)
         
-        # 임계치 위험 감지 로직 마크업
         tg_status = "🚨 위험 (침체 전환 위험)" if term_gap > -0.10 and term_gap <= 0.10 else "■ 정상 범위"
         c2_status = "🚨 고금리 임계 과열" if c_2y_rate >= 5.0 else "■ 정상 범위"
         jpy_status = "🚨 캐리 청산 폭탄 가동" if jpy_rate <= 140.0 else "■ 정상 범위"
@@ -390,7 +387,6 @@ with tab5:
 with tab6:
     str_visual.header("🦅 미누락 리스크 & Liquidity 고급 통제 대시보드")
     
-    # 프록시 자산 로드
     tlt_d = get_expert_calculated_data({"변동성": {"TLT": "TLT"}}, selected_date).get("TLT", {"일간변동(%)":0})
     hyg_d = get_expert_calculated_data({"부도스프레드": {"HYG": "HYG"}}, selected_date).get("HYG", {"현재가":0, "일간변동(%)":0})
     
@@ -411,7 +407,7 @@ with tab6:
         - **MOVE Index 프록시:** 채권 시장 변동성 측정 장치. 현재 TLT 채권 가격 일간 변동 강도는 `{tlt_d['일간변동(%)']}%` 연동 중.
         """)
 
-# --- 탭 7: 통화정책 & 글로벌 핵심 캘린더 (당월/익월 일정 완벽 가이드) ---
+# --- 탭 7: 통화정책 & 글로벌 핵심 캘린더 ---
 with tab7:
     str_visual.header("🗓️ 글로벌 중앙은행 핵심 경제지표 캘린더 스케줄러")
     str_visual.caption("매달 정기적으로 돌아오는 글로벌 마켓 무빙 매커니즘 일정표입니다.")
