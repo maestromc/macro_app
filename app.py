@@ -372,18 +372,25 @@ with tab5:
     str_visual.markdown("#### 📈 S&P 500 실시간 다년도 종합 추세선 차트")
    
     tradingview_chart_code = """
-    <div class="tradingview-widget-container" style="height:380px;">
-      <div id="tradingview_expert_chart" style="height:100%;"></div>
-      <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-      <script type="text/javascript">
-      new TradingView.widget({
-        "autosize": true, "symbol": "AMEX:SPY", "interval": "D", "timezone": "Etc/UTC",
-        "theme": "light", "style": "1", "locale": "kr", "container_id": "tradingview_expert_chart"
-      });
+ <div class="tradingview-widget-container" style="height:100%; width:100%;">
+      <div id="tradingview_expert_chart" style="height:calc(100% - 32px); width:100%"></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+      {
+        "autosize": true,
+        "symbol": "SP:SPX",
+        "interval": "D",
+        "timezone": "Etc/UTC",
+        "theme": "light",
+        "style": "1",
+        "locale": "kr",
+        "enable_publishing": false,
+        "allow_symbol_change": true,
+        "container_id": "tradingview_expert_chart"
+      }
       </script>
     </div>
     """
-    components.html(tradingview_chart_code, height=380)
+    components.html(tradingview_chart_code, height=450)
        
     str_visual.markdown("---")
     str_visual.markdown("#### 🧱 11대 섹터 및 5대 핵심 팩터 마스터 인프라 맵")
