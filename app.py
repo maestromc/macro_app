@@ -469,28 +469,45 @@ with tab6:
         """)
 
 
-# --- 탭 7: 글로벌 통화정책 캘린더 ---
+# --- 탭 7: 매크로 인텔리전스 전략 (신설) ---
 with tab7:
-    str_visual.header("🗓️ 글로벌 중앙은행 핵심 경제지표 캘린더 스케줄러 (실시간 동기화 완료)")
-    str_visual.caption("전 세계 주요 권역의 경제 데이터 및 중앙은행 일정이 동기화되어 표출되는 마스터 경제 허브입니다.")
-   
-    tradingview_widget_js = """
-    <div class="tradingview-widget-container" style="height:3000px; width:100%;">
-      <div class="tradingview-widget-container__widget"></div>
-      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
-      {
-      "colorTheme": "light",
-      "isTransparent": false,
-      "width": "100%",
-      "height": "100%",
-      "locale": "kr",
-      "importanceFilter": "-1,0,1",
-      "countryFilter": "us,eu,gb,jp,cn,kr"
-      }
-      </script>
-    </div>
-    """
-    components.html(tradingview_widget_js, height=3000)
+    str_visual.header("🚀 매크로 인텔리전스 및 중앙은행 전략 센터")
+    
+    # 1. 핵심 매크로 변수 Top 7 & 대시보드 체크포인트
+    str_visual.subheader("📊 핵심 매크로 변수 Top 7 우선순위")
+    macro_priority = [
+        {"순위": 1, "요소": "인플레이션 (CPI+PCE)", "이유": "통화정책 1순위 목표", "체크포인트": "Core PCE YoY, Core CPI"},
+        {"순위": 2, "요소": "고용 / 노동시장", "이유": "Fed Dual Mandate 핵심", "체크포인트": "실업률, NFP, JOLTS, 임금상승률"},
+        {"순위": 3, "요소": "경제 성장 (GDP, PMI)", "이유": "과열 vs 침체 판단", "체크포인트": "ISM PMI, Global PMI, GDP Nowcast"},
+        {"순위": 4, "요소": "금융시장 안정성", "이유": "시스템 리스크 계측", "체크포인트": "VIX, HY Spread, Yield Curve"},
+        {"순위": 5, "요소": "원자재 가격 (Oil)", "이유": "공급측 인플레 proxy", "체크포인트": "WTI, Brent, CRB Index"},
+        {"순위": 6, "요소": "환율 (DXY, JPY 등)", "이유": "자본 유출입, 수입물가", "체크포인트": "DXY, USD/CNY, USD/JPY"},
+        {"순위": 7, "요소": "자산 가격 버블", "이유": "과열 시 선제 대응", "체크포인트": "Shiller PE, Buffett Indicator"}
+    ]
+    str_visual.dataframe(pd.DataFrame(macro_priority), use_container_width=True, hide_index=True)
+
+    str_visual.markdown("---")
+    
+    # 2. 중앙은행별 가중치 비교
+    str_visual.subheader("🏦 중앙은행별 의사결정 가중치 (실전 비교)")
+    cb_data = {
+        "중앙은행": ["Fed (미국)", "ECB (유럽)", "BOJ (일본)", "PBOC (중국)"],
+        "가장 민감한 요소": ["Core PCE + 고용", "Headline CPI + 에너지", "USD/JPY + 국채금리", "위안화 환율 + 부동산"],
+        "덜 보는 요소": ["환율 (기축통화)", "고용 (구조적실업)", "인플레이션", "성장 안정성보다 자유화"]
+    }
+    str_visual.table(pd.DataFrame(cb_data))
+
+    # 3. 실시간 시장 연동 체크포인트
+    str_visual.markdown("---")
+    c1, c2 = str_visual.columns(2)
+    with c1:
+        str_visual.markdown("#### 🛠️ 바로 체크해야 할 매크로 지표")
+        str_visual.write("- **미국 국채 2년물 금리:** SOFR 대용지표 (5% 임계선)")
+        str_visual.write("- **하이일드 스프레드:** 전일가 기준 하이일드 ETF(HYG) 가격으로 간접 확인")
+        str_visual.write("- **VIX 지수:** 25 돌파 여부 (금융시장 패닉 강도)")
+    with c2:
+        str_visual.markdown("#### 💡 실전 장인 팁")
+        str_visual.info("1. 인플레 > 성장 > 고용 > 금융안정 순으로 우선순위가 바뀝니다.\n2. Yield Curve Inversion(금리차 역전) + LEI 하락 동시 발생 시 금리 인하 확률 급증.\n3. 인플레가 5% 상회 시 다른 지표 무시하고 '금리 인상'에만 집중하세요.")
 
 
 # --- 탭 8: 오늘의 투자 공부 ---
